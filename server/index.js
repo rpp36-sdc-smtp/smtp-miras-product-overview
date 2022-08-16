@@ -1,28 +1,18 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-// const db = require('./queries')
-
 const app = express()
+const db = require('../db/queries.js')
 const port = 3000
 
-const db = require('../db/index.js');
-// const { getAll, getOne, getStyles, getRelated } = require('./helpers.js');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get('/', (req, res) => {
-  res.send('hello world!');
-})
-
-//ROUTES
-// app.get('/products', db.getProducts);
-// app.get('/products', getAll);
-// app.get('/products/:product_id', getOne);
-// app.get('/products/:product_id/styles', getStyles);
-// app.get('/products/:product_id/related', getRelated);
+app.use(express.json())
+app.get('/api/products', db.getAllProducts)
+app.get('/api/products/:id/related', db.getRelated)
+app.get('/api/products/:id', db.getProduct)
+//combination of features
+app.get('/api/products/:id/styles', db.getStyles)
+//combination of photos/skus
 
 
 app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
+  console.log(`App listening at http://localhost:${port}`)
+})

@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS product_overview;
+-- DROP DATABASE IF EXISTS product_overview;
 
-CREATE DATABASE product_overview;
+-- CREATE DATABASE product_overview;
 
-\c product_overview;
+-- \c product_overview;
 
-DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS ref_products;
 
-CREATE TABLE products (
+CREATE TABLE ref_products (
   id INTEGER NOT NULL,
   name VARCHAR(255) NULL DEFAULT NULL,
   slogan VARCHAR(255) NULL DEFAULT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE products (
   PRIMARY KEY (id)
 );
 
-COPY products (
+COPY ref_products (
 id,
 name,
 slogan,
