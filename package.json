@@ -1,0 +1,24 @@
+{
+  "name": "smtp-miras-product-overview",
+  "version": "1.0.0",
+  "description": "system design capstone project is prepared by Hack Reactor and completed by team \"SMTP\" ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdilovM/smtp-miras-product-overview.git"
+  },
+  "author": "Miras Adilov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdilovM/smtp-miras-product-overview/issues"
+  },
+  "homepage": "https://github.com/AdilovM/smtp-miras-product-overview#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jest": "^28.1.3",
+    "pg": "^8.7.3"
+  }
+}
