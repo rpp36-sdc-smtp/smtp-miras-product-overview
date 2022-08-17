@@ -55,10 +55,8 @@ const grabData = async (productID) => {
 
 
 const getProduct = (request, response) => {
-  pool.query(`SELECT a.id, a.name, a.slogan, a.description, a.category, a.default_price,
-    json_agg(json_build_object('features', f.feature, 'values', f.value)) features
-    FROM ref_products AS a JOIN features AS f ON f.product_id = a.id WHERE a.id = ${request.params.id}
-    GROUP BY a.id`, (error, results) => {
+  pool.query(`SELECT * FROM APIResponseRecords
+    WHERE id = ${request.params.id}`, (error, results) => {
     if (error) {
       throw error
     }
@@ -67,10 +65,7 @@ const getProduct = (request, response) => {
 }
 
 const getAllProducts = (request, response) => {
-  pool.query(`SELECT a.id, a.name, a.slogan, a.description, a.category, a.default_price,
-    json_agg(json_build_object('features', f.feature, 'values', f.value)) features
-    FROM ref_products AS a JOIN features AS f ON f.product_id = a.id
-    GROUP BY a.id LIMIT 5`, (error, results) => {
+  pool.query(`SELECT * FROM APIResponseRecords LIMIT 5`, (error, results) => {
     if (error) {
       throw error
     }
@@ -100,26 +95,6 @@ const getRelated = (request, response) => {
     }
   })
 }
-
-// const getStyles = (request, response) => {
-//   pool.query(`SELECT s.style_id, name, s.original_price, s.sale_price, s.default_style,
-// json_agg(json_build_object('thumbnail_url', p.thumbnail_url, 'url', p.url )) photos,
-// json_agg(json_build_object('quantity', skus.quantity, 'size', skus.size))
-// FROM styles AS s LEFT JOIN photos as p ON p.style_id = s.style_id WHERE s.product_id = 1 GROUP BY s.style_id LIMIT 5`, (error, results) => {
-//     if (error) {
-//       console.error(error.message)
-//     } else {
-//       var emptyObj = {}
-//       emptyObj.product_id = request.params.id
-//       emptyObj.results = results.rows
-//       response.status(200).send(emptyObj)
-//     }
-//   })
-// }
-
-
-
-
 
 module.exports = {
   getProduct,
