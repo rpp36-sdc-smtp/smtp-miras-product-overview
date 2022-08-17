@@ -1,10 +1,10 @@
 const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('postgres://mirasadilov:1234@db:5432/sdc')
+const sequelize = new Sequelize('postgres://user:1234@db:5432/product_overview')
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'mirasadilov',
+  user: 'user',
   host: 'db',
-  database: 'sdc',
+  database: 'product_overview',
   password: '1234',
   port: 5432,
 })
