@@ -1,6 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 module.exports = function(sequelize) {
-  return sequelize.define('product', {
+  return sequelize.define('products', {
     product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -28,7 +28,7 @@ module.exports = function(sequelize) {
     }
   },{
     sequelize,
-    tableName: 'product',
+    tableName: 'products',
     timestamps: false
   });
 };

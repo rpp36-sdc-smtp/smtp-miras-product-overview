@@ -1,9 +1,9 @@
 const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('postgres://user:1234@db:5432/product_overview')
+const sequelize = new Sequelize('postgres://dev:1234@localhost:5432/product_overview')
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'user',
-  host: 'db',
+  user: 'dev',
+  host: 'localhost',
   database: 'product_overview',
   password: '1234',
   port: 5432,
@@ -53,9 +53,10 @@ const grabData = async (productID) => {
   return formattedData
 }
 
+// APIResponseRecords
 
 const getProduct = (request, response) => {
-  pool.query(`SELECT * FROM APIResponseRecords
+  pool.query(`SELECT * FROM apiresponserecords
     WHERE id = ${request.params.id}`, (error, results) => {
     if (error) {
       throw error
@@ -65,7 +66,7 @@ const getProduct = (request, response) => {
 }
 
 const getAllProducts = (request, response) => {
-  pool.query(`SELECT * FROM APIResponseRecords LIMIT 5`, (error, results) => {
+  pool.query(`SELECT * FROM apiresponserecords LIMIT 5`, (error, results) => {
     if (error) {
       throw error
     }
